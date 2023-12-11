@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>老舍</title>
+    <link rel="icon" href="img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="css/flaticon.css">
+    <!-- magnific popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- nice select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!--::header part start::-->
+    <div th:replace="commonPart/headPart::headPart"></div>
+    <!-- Header part end-->
+
+    <!-- banner part start-->
+    <section class="banner_part">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-xl-5">
+                    <div class="banner_text">
+                        <div class="banner_text_iner">
+                            <h5>We are here for your care</h5>
+                            <h1>欢迎你，[[${session.user.userName}]]</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="banner_img">
+                        <img src="img/banner_img.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- banner part start-->
+
+    <!-- feature_part start-->
+    <section class="feature_part">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8">
+                    <div class="section_tittle text-center">
+                        <h2>我们的服务</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-3 col-sm-12">
+                    <div class="single_feature">
+                        <div class="single_feature_part">
+                            <span class="single_feature_icon"><img src="img/icon/feature_1.svg" alt=""></span>
+                            <h4>养老评级</h4>
+                            <p>对养老照护等级进行评定，依据国家民政部提出的照护等级评估方案，由用户上交问卷情况，医生在医生端进行等级评估。</p>
+                        </div>
+                    </div>
+                    <div class="single_feature">
+                        <div class="single_feature_part">
+                            <span class="single_feature_icon"><img src="img/icon/feature_2.svg" alt=""></span>
+                            <h4>健康评估</h4>
+                            <p>基于日常数据的健康分析，在用户端用户自身或者看护人可以填写用户每日的身体基本情况，避免了前往医院体检耗费。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="single_feature_img">
+                        <img src="img/service.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-12">
+                    <div class="single_feature">
+                        <div class="single_feature_part">
+                            <span class="single_feature_icon"><img src="img/icon/feature_3.svg" alt=""></span>
+                            <h4>文章科普</h4>
+                            <p>为增加系统的功能性，系统中将配有科普文章模块，医生可以定期上传有关生活常识或是生活习惯的科普文章供用户阅读。</p>
+                        </div>
+                    </div>
+                    <div class="single_feature">
+                        <div class="single_feature_part">
+                            <span class="single_feature_icon"><img src="img/icon/feature_4.svg" alt=""></span>
+                            <h4>紧急援助</h4>
+                            <p>随时进行异常情况上报，当身体出现些许不适或是非正常的小情况时，可以填写异常信息上报进行上传，减少了老人的路程奔波同时获得医生的反馈。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div th:replace="commonPart/footPart::footPart"></div>
+
+    <!-- jquery plugins here-->
+    <script src="/js/jquery.js"></script>
+    <!-- popper js -->
+    <script src="/js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- owl carousel js -->
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <!-- contact js -->
+    <script src="/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/js/jquery.form.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/mail-script.js"></script>
+    <script src="/js/contact.js"></script>
+    <!-- custom js -->
+    <script src="/js/custom.js"></script>
+</body>
+
+</html>

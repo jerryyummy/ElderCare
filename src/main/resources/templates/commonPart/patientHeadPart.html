@@ -1,0 +1,40 @@
+<nav th:fragment="patientHeadPart">
+  <header class="main_menu">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-12">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="/patientIndex"> <img src="/img/logo.png" alt="logo"> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse main-menu-item justify-content-center"
+                 id="navbarSupportedContent">
+              <ul class="navbar-nav align-items-center">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/patientIndex">主页</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dailyCheck">日常评估</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/emergency">异常上报</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/patientRating">分级申请</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/article">科普文章</a>
+                </li>
+              </ul>
+            </div>
+            <!--                        -->
+            <a class="btn_2 d-none d-lg-block" href="/logout">注销登陆</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+</nav>

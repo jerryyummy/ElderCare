@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>老舍</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.png">
+
+
+    <link rel="stylesheet" href="/css/login_style.css">
+    <link rel="stylesheet" href="/css/login_uikit.css">
+    <link rel="stylesheet" href="/css/login_icons.css">
+
+<!--    <script src="https://kit.fontawesome.com/815e388c50.js" crossorigin="anonymous"></script>-->
+<!--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">-->
+
+</head>
+
+<body class="bg-white">
+
+
+
+
+<div uk-height-viewport class="uk-flex uk-flex-middle">
+    <div class="uk-width-2-3@m uk-width-1-2@s m-auto rounded uk-overflow-hidden shadow-lg">
+        <div class="uk-child-width-1-2@m uk-grid-collapse bg-gradient-primary" uk-grid>
+
+            <!-- column one -->
+            <div class="uk-margin-auto-vertical uk-text-center uk-animation-scale-up p-3 uk-light">
+                <a href="/login/faceCheck">
+                    <img src="/img/logo.png" alt="">
+                    <h3 class="mb-5 mt-lg-3">老   舍</h3>
+                    <p>养老照护等级标准与健康风险分析系统</p>
+<!--                    <img src="/img/logo.png">-->
+                    <div class="mt-4 uk-flex-middle uk-grid-margin-large" uk-grid>
+                        <div class="uk-width-large@xl">
+                            <button type="submit"  class="button primary">无障碍登陆</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- column two -->
+            <div class="uk-card-default px-5 py-8">
+                <div class="mb-4 uk-text-center">
+                    <h3 class="mb-0">好久不见</h3>
+                </div>
+                <form action="/login" method="post">
+
+                    <div class="uk-form-group">
+                        <label class="uk-form-label">账号</label>
+
+                        <div class="uk-position-relative w-100">
+                                <span class="uk-form-icon">
+                                    <i class="icon-feather-lock"></i>
+                                </span>
+                            <input class="uk-input" type="text" name="username" placeholder="">
+                        </div>
+
+                    </div>
+
+                    <div class="uk-form-group">
+                        <label class="uk-form-label">密码</label>
+
+                        <div class="uk-position-relative w-100">
+                                <span class="uk-form-icon">
+                                    <i class="icon-feather-lock"></i>
+                                </span>
+                            <input class="uk-input" type="password" name="password" placeholder="">
+                        </div>
+
+                    </div>
+
+                    <div class="mt-4 uk-flex-middle uk-grid-small" uk-grid>
+                        <div class="uk-width-expand@s">
+                            <p> 忘记密码？ <a href="/login/faceCheck">无障碍登陆</a></p>
+                        </div>
+                        <div class="uk-width-auto@s">
+                            <button type="submit"  class="button primary">登陆</button>
+                        </div>
+                    </div>
+                </form>
+                <p style="color:red;">[[${error}]]</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/login_uikit.js"></script>
+<script src="/js/login_simplebar.js"></script>
+
+</body>
+</html>

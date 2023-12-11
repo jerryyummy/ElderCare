@@ -1,0 +1,230 @@
+    <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>老舍</title>
+    <link rel="icon" href="img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="css/flaticon.css">
+    <!-- magnific popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- nice select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!--::header part start::-->
+<div th:replace="commonPart/patientHeadPart::patientHeadPart"></div>
+<!-- Header part end-->
+
+<!-- breadcrumb start-->
+<section class="breadcrumb_part breadcrumb_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner">
+                    <div class="breadcrumb_iner_item">
+                        <h2>分级申请</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb start-->
+
+
+<!-- rating form part start-->
+<!-- Start Align Area -->
+<div class="whole-wrap">
+    <div class="container box_1170">
+        <div class="section-top-border">
+            <div class="justify-content-center">
+                <div class="row">
+                    <div class="col-8">
+                        <h2 class="mb-20">分级评估申请</h2>
+                    </div>
+                </div>
+                <br>
+                <form action="servicerating.html" th:action="@{/saveRatingForm}" th:object="${ratingForm}" method="POST">
+                    <h3 class="ti-Italic text-black-50">老年人能力评分</h3>
+                    <br>
+                    <div class="form-group">
+                        <label for="default-select_1">日常生活活动评分</label>
+                        <div class="form-select" id="default-select_1" >
+                            <select th:field="*{dailyScore}">
+                                <option value="0">0级（能力完好）</option>
+                                <option value="1">1级（轻度受损）</option>
+                                <option value="2">2级（中度受损）</option>
+                                <option value="3">3级（重度受损）</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="default-select_2">精神状态能力评分</label>
+                        <div class="form-select" id="default-select_2">
+                            <select th:field="*{mentalScore}">
+                                <option value="0">0级（能力完好）</option>
+                                <option value="1">1级（轻度受损）</option>
+                                <option value="2">2级（中度受损）</option>
+                                <option value="3">3级（重度受损）</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="default-select_3">感知觉与沟通评分</label>
+                        <div class="form-select" id="default-select_3">
+                            <select th:field="*{senseScore}">
+                                <option value="0">0级（能力完好）</option>
+                                <option value="1">1级（轻度受损）</option>
+                                <option value="2">2级（中度受损）</option>
+                                <option value="3">3级（重度受损）</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="default-select_4">社会参与评分</label>
+                        <div class="form-select" id="default-select_4">
+                            <select th:field="*{socialScore}">
+                                <option value="0">0级（能力完好）</option>
+                                <option value="1">1级（轻度受损）</option>
+                                <option value="2">2级（中度受损）</option>
+                                <option value="3">3级（重度受损）</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="default-select_5">老年人能力总体结果评分</label>
+                        <div class="form-select" id="default-select_5">
+                            <select th:field="*{activityScore}">
+                                <option value="1">0级（能力完好）</option>
+                                <option value="1">1级（轻度失能）</option>
+                                <option value="1">2级（中度失能）</option>
+                                <option value="1">3级（重度失能）</option>
+                            </select>
+                        </div>
+                    </div>
+                    <h3 class="ti-Italic text-black-50">医疗照护评级</h3>
+                    <br>
+                    <div class="form-group">
+                        <label for="default-select_6">医疗照护评分</label>
+                        <div class="form-select" id="default-select_6">
+                            <select th:field="*{medCareScore}">
+                                <option value="0">0级（不依赖）:基础护理为不依赖或轻度依赖，常规治疗护理、康复护理为不依赖</option>
+                                <option value="1">1级（轻度依赖）:基础护理为不依赖或轻、中度依赖，常规治疗护理或康复护理为轻度依赖</option>
+                                <option value="2">2级（中度依赖）:基础护理为中、重度依赖，常规治疗护理或康复护理为中度依赖</option>
+                                <option value="3">3级（重度依赖）:常规治疗护理或康复护理为重度依赖</option>
+                                <option value="4">4级（极重度依赖）:接受特殊治疗/护理</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>医疗照护具体说明</label>
+                        <textarea class="single-textarea" placeholder="医疗照护具体说明" onfocus="this.placeholder = ''"
+                                  onblur="this.placeholder = '医疗照护具体说明'" required th:field="*{medCareDescription}"></textarea>
+                    </div>
+                    <h3 class="ti-Italic text-black-50">疾病状况评分</h3>
+                    <br>
+                    <div class="form-group">
+                        <label for="default-select_7">疾病状况评分</label>
+                        <div class="form-select" id="default-select_7">
+                            <select th:field="*{diseaseScore}">
+                                <option value="0">0级（无第一、第二类疾病）</option>
+                                <option value="1">1级（患有1种～2种第一类疾病）</option>
+                                <option value="2">2级（患有3种以上第一类疾病）</option>
+                                <option value="3">3级（患有第二类疾病）</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>疾病状况具体说明</label>
+                        <textarea class="single-textarea" placeholder="疾病状况具体说明" onfocus="this.placeholder = ''"
+                                  onblur="this.placeholder = '疾病状况具体说明'" required th:field="*{diseaseDescription}"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>疾病既往史</label>
+                        <textarea type="text" name="name" placeholder="疾病既往史"
+                                  onfocus="this.placeholder = ''" onblur="this.placeholder = '疾病既往史'" required
+                                  class="single-input" th:field="*{diseaseHistory}"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>药物过敏史</label>
+                        <textarea type="text" name="name" placeholder="药物过敏史"
+                                  onfocus="this.placeholder = ''" onblur="this.placeholder = '药物过敏史'" required
+                                  class="single-input" th:field="*{drugHistory}"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>暴露史</label>
+                        <textarea type="text" name="name" placeholder="暴露史"
+                                  onfocus="this.placeholder = ''" onblur="this.placeholder = '暴露史'" required
+                                  class="single-input" th:field="*{exposureHistory}"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>家族遗传史</label>
+                        <textarea type="text" name="name" placeholder="家族遗传史"
+                                  onfocus="this.placeholder = ''" onblur="this.placeholder = '家族遗传史'" required
+                                  class="single-input" th:field="*{familyHistory}"></textarea>
+                    </div>
+                    <h3 class="ti-Italic text-black-50">社会支持评级</h3>
+                    <br>
+                    <div class="form-group">
+                        <label for="default-select_8">社会支持评分</label>
+                        <div class="form-select" id="default-select_8">
+                            <select th:field="*{societySupport}">
+                                <option value="0">1级（低水平）</option>
+                                <option value="1">2级（中等水平）</option>
+                                <option value="2">3级（高水平）</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10">
+                        </div>
+                        <div class="col-2">
+                            <input type="submit" class="btn_2 mt-30" onClick="return confirm('确定提交?')" style="outline:none;border:0">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- rating form part end-->
+
+<!-- footer part start-->
+<div th:replace="commonPart/footPart::footPart"></div>
+<!-- footer part end-->
+<!-- jquery plugins here-->
+
+<script src="js/jquery-1.12.1.min.js"></script>
+<!-- popper js -->
+<script src="js/popper.min.js"></script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- owl carousel js -->
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<!-- contact js -->
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/contact.js"></script>
+<!-- custom js -->
+<script src="js/custom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>老舍</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="images/favicon.png">
+
+
+  <link rel="stylesheet" href="/css/login_style.css">
+  <link rel="stylesheet" href="/css/login_uikit.css">
+  <link rel="stylesheet" href="/css/login_icons.css">
+
+  <script src="/js/jquery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  <script src="https://kit.fontawesome.com/815e388c50.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+  <script th:inline="javascript">
+      var targetFace = [[${user}]];
+      console.log(targetFace);
+  </script>
+  <script>
+
+    var check = function (){
+      const context = canvas.getContext("2d");
+      context.drawImage(video,0,0,100,80);
+      uploadImage();
+    }
+
+    // 页面启动函数
+    $(document).ready(function(){
+      // 调用invokeCamera()
+      invokeCamera();
+      // 创建全局对象context,存放人像数据
+      const context = canvas.getContext("2d");
+      setInterval(check,2000);
+      // 为按钮添加单击处理事件 document.getElementById("acqusition_of_features") button dom
+      document.getElementById("acqusition_of_features").addEventListener("click", function(){
+        // 在canvas中生成静态人像图片
+        context.drawImage(video,0,0,100,80); //
+        // 调用人像数据上传函数
+        uploadImage();
+      });
+    });
+
+    // 自定义一个函数，启动设备摄像头，并将视频流数据实时显示在组件中
+    function invokeCamera(){
+
+      // 步骤1：创建局部变量设置视频采集区域大小以及是否接受声音
+      let constranits = {
+        video: {width:510, height:430},
+        audio: false // 设置为True可以获取声音
+      }
+      let video = document.getElementById("video"); // 得到video标签的dom对象
+      let promise = navigator.mediaDevices.getUserMedia(constranits); // Edge  chrome
+      // 使用promise对象的then()函数
+      promise.then(function(MediaStream){ // 摄像头里的视频流
+        video.srcObject = MediaStream;  // 将媒体流对象设置到video组件中
+        video.play();  // 设置video对象为播放状态
+      });
+    }
+
+    // 自定义函数实现Ajax图片上传
+    var uploadImage = function(){
+      // 获取canvas组件中的图片信息数据
+      imageData = getBase64(); // base64编码格式数据
+      // 将人像图片的数据类型装换成json格式
+      var data = {face:imageData};
+      // 使用Ajax上传数据
+      $.ajax({
+        url: "/login/faceContrast",  // 请求地址
+        type: "POST",              // 发送post请求
+        dataType: "json",          // 响应结果的数据类型
+        data: data,                 // 请求数据
+        success:function(data){    // 响应的回调函数
+          // window.location.href = "doctorIndex.html"
+          if(data=="false"){
+
+          }else{
+            console.log("验证成功，请稍候")
+            window.location.href="/"+data;
+          }
+        }
+      });
+    }
+    function getBase64() {
+      // DOM：文档对象模型  $("#canvas") imgSrc 就是base64的字符串，带文件头 string
+      var imgSrc = document.getElementById("canvas").toDataURL(
+              "image/png");
+      return imgSrc.split("base64,")[1];
+    }
+  </script>
+</head>
+
+<body class="bg-white">
+
+
+
+
+<div uk-height-viewport class="uk-flex uk-flex-middle" style="display: flex;flex-direction: column;margin-top: 5%;">
+  <div class="uk-width-2-3@m uk-width-1-2@s m-auto rounded uk-overflow-hidden shadow-lg">
+    <div class="uk-child-width-1-2@m uk-grid-collapse bg-gradient-primary" uk-grid>
+
+      <!-- column one -->
+      <div class="uk-margin-auto-vertical uk-text-center uk-animation-scale-up p-3 uk-light" style="margin:0px auto; ">
+        <!--  h5  video src="" -->
+        <video id="video" autoplay="autoplay"
+               style="width: 400px; border: 1px dashed blueviolet; border-radius: 12px;"></video>
+      </div>
+
+      <!-- column two -->
+      <div class="uk-card-default px-5 py-8" style="display: none">
+        <div style="margin:0px auto;">
+          <canvas id="canvas" width="100", height="80"
+                  style="border: 1px dashed blueviolet; border-radius: 10px; margin-top: 1px;width: 100%;height: auto"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin:0px auto;text-align: center;">
+    <button id="acqusition_of_features" style="cursor: pointer; width: 140px;
+                           height: 45px; color: white;
+                           background-color:#1a7dde;
+                           border: 0px; border-radius: 7px;
+                           margin-top: 10px;">
+      手动识别
+    </button>
+    <button style="cursor: pointer; width: 140px;
+                    height: 45px; color: white;
+                    background-color:gray;
+                    border: 0px; border-radius: 7px;
+                    margin-top: 10px;" onclick="javascript:history.back();">
+      返回
+    </button>
+  </div>
+</div>
+
+<script src="/js/login_uikit.js"></script>
+<script src="/js/login_simplebar.js"></script>
+
+</body>
+</html>

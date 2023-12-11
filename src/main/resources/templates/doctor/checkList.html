@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>老舍</title>
+    <link rel="icon" href="/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <!-- magnific popup CSS -->
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <!-- nice select CSS -->
+    <link rel="stylesheet" href="/css/nice-select.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="/css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<!--::header part start::-->
+<div th:replace="commonPart/headPart::headPart"></div>
+<!-- Header part end-->
+
+
+<!--::doctor_part start::-->
+<section class="doctor_part single_page_doctor_part">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8">
+                <div class="section_tittle text-center">
+                    <h2>日常报告信息列表</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="section-top-border">
+                <aside class="single_sidebar_widget search_widget">
+                    <form action="#">
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <input id="searchKey" type="text" class="form-control" placeholder="Search Keyword" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                <button class="btn btn-primary rounded-0" onclick="search()">搜索</button>
+                            </div>
+                        </div>
+                    </form>
+                </aside>
+                <div class="progress-table-wrap">
+                    <div class="progress-table">
+                        <div class="table-head">
+                            <div class="serial">#</div>
+                            <div class="country">姓名</div>
+                            <div class="visit">年龄</div>
+                            <div class="percentage">点击查看</div>
+                        </div>
+                        <div th:each="item:${checkList}">
+                            <div class="info-item">
+                                <div class="table-row">
+                                    <div class="serial" th:text="${item.id}">01</div>
+                                    <div class="country" th:text="${item.name}">Canada</div>
+                                    <div class="visit" th:text="${item.age}">645032</div>
+                                    <div class="percentage">
+                                        <p>
+                                            <button class="btn btn-primary"  th:onclick="'dailyreport('+${item.id}+')'" role="button" aria-expanded="false">点击查看</button>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav class="blog-pagination justify-content-center d-flex">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a href="#" class="page-link" aria-label="Previous">
+                                <i class="ti-angle-left"></i>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a href="#" class="page-link">1</a>
+                        </li>
+                        <li class="page-item active">
+                            <a href="#" class="page-link">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="#" class="page-link" aria-label="Next">
+                                <i class="ti-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!--::doctor_part end::-->
+
+<!-- footer part start-->
+<div th:replace="commonPart/footPart::footPart"></div>
+
+<!-- footer part end-->
+
+<!-- jquery plugins here-->
+
+<script src="/js/jquery-1.12.1.min.js"></script>
+<!-- popper js -->
+<script src="/js/popper.min.js"></script>
+<!-- bootstrap js -->
+<script src="/js/bootstrap.min.js"></script>
+<!-- owl carousel js -->
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/jquery.nice-select.min.js"></script>
+<!-- contact js -->
+<script src="/js/jquery.ajaxchimp.min.js"></script>
+<script src="/js/jquery.form.js"></script>
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/mail-script.js"></script>
+<script src="/js/contact.js"></script>
+<!-- custom js -->
+<script src="/js/custom.js"></script>
+<script>
+    function dailyreport(id){
+        window.location.href = "/patientDailyInfo/"+id;
+    }
+    function search() {
+        var name =  document.getElementById('searchKey').value
+        console.log(name);
+        console.log(".....");
+        var items = document.getElementsByClassName('info-item')
+        for (var i = 0; i < items.length; i++) {
+            // console.log(items[i].getElementsByClassName('country')[0].innerText);
+            if (items[i].getElementsByClassName('country')[0].innerText===name){
+                items[i].style.display='block'
+            }
+            else {
+                items[i].style.display='none'
+            }
+        }
+
+    }
+</script>
+</body>
+
+</html>

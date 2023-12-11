@@ -1,0 +1,265 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>老舍</title>
+    <link rel="icon" href="img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="css/flaticon.css">
+    <!-- magnific popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- nice select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<!--::header part start::-->
+    <div th:replace="commonPart/headPart::headPart"></div>
+    <!-- Header part end-->
+
+        <!-- breadcrumb start-->
+        <section class="breadcrumb_part breadcrumb_bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb_iner">
+                            <div class="breadcrumb_iner_item">
+                                <h2>分级审核</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- breadcrumb start-->
+
+        <!--::doctor_part start::-->
+    <section class="doctor_part single_page_doctor_part">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8">
+                    <div class="section_tittle text-center">
+                        <h2>审核列表</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="section-top-border">
+                    <aside class="single_sidebar_widget search_widget">
+                        <form action="#">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Search Keyword" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                    <button class="btn btn-primary rounded-0" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </aside>
+                    <div class="progress-table-wrap">
+                        <div class="progress-table">
+                            <div class="table-head">
+                                <div class="serial">#</div>
+                                <div class="country">姓名</div>
+                                <div class="visit">评级</div>
+                                <div class="percentage">查看详情</div>
+                            </div>
+                            <div th:each="item:${checkList}">
+                                <div class="table-row">
+                                    <div class="serial" th:text="${item.userId}">01</div>
+                                    <div class="country" th:text="${item.name}">canada</div>
+                                    <div class="visit" th:text="${item.level}">645032</div>
+                                    <button class="btn btn-primary" data-toggle="modal" th:data-target="'#staticBackdrop'+${item.userId}">
+                                        点击查看
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="blog-pagination justify-content-center d-flex">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a href="#" class="page-link" aria-label="Previous">
+                                    <i class="ti-angle-left"></i>
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a href="#" class="page-link">1</a>
+                            </li>
+                            <li class="page-item active">
+                                <a href="#" class="page-link">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a href="#" class="page-link" aria-label="Next">
+                                    <i class="ti-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--::doctor_part end::-->
+<div th:each="item:${checkList}">
+    <div class="modal fade" style="z-index: 2147483647" id="staticBackdrop1" th:id="'staticBackdrop'+${item.userId}" data-backdrop="static" data-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title">请医生根据下述报告进行分级审核</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="card-title col-3">姓名:[[${item.name}]]</p>
+                    <p class="card-title col-3">年龄:[[${item.age}]]</p>
+                    <ul class="list-group list-group-flush">
+                        <div class="row">
+                            <li class="list-group-item col-md-6">日常生活活动评分</li>
+                            <li class="list-group-item col-md-6" th:text="${item.dailyScore}">Cras justo odio</li>
+                        </div>
+                        <div class="row">
+                            <li class="list-group-item col-md-6">精神状态评分</li>
+                            <li class="list-group-item col-md-6" th:text="${item.mentalScore}">Cras justo odio</li>
+                        </div>
+                        <div class="row">
+                            <li class="list-group-item col-md-6">感知觉与沟通评分</li>
+                            <li class="list-group-item col-md-6" th:text="${item.senseScore}">Cras justo odio</li>
+                        </div>
+                        <div class="row">
+                            <li class="list-group-item col-md-6">社会参与评分</li>
+                            <li class="list-group-item col-md-6" th:text="${item.socialScore}">Cras justo odio</li>
+                        </div>
+                        <div class="row">
+                            <li class="list-group-item col-md-6">医疗照护评分</li>
+                            <li class="list-group-item col-md-6" th:text="${item.medCareScore}">Cras justo odio</li>
+                        </div>
+                        <div class="row">
+                            <li class="list-group-item col-md-6">疾病状况评分</li>
+                            <li class="list-group-item col-md-6" th:text="${item.diseaseScore}">Cras justo odio</li>
+                        </div>
+                        <div class="row">
+                            <li class="list-group-item col-md-6">社会支持评分</li>
+                            <li class="list-group-item col-md-6" th:text="${item.societySupport}">Cras justo odio</li>
+                        </div>
+                        <div class="row">
+                            <li class="list-group-item col-md-6">医疗照护具体说明</li>
+                            <p class="list-group-item col-md-6" th:text="${item.medCareDescription}">Cras justo odio</p>
+                        </div>
+                        <div class="row">
+                            <li class="list-group-item col-md-6">疾病状况具体说明</li>
+                            <p class="list-group-item col-md-6" th:text="${item.diseaseDescription}">Cras justo odio</p>
+                        </div>
+                        <div class="row">
+                            <li class="list-group-item col-md-6">疾病既往史</li>
+                            <p class="list-group-item col-md-6" th:text="${item.diseaseHistory}">Cras justo odio</p>
+                        </div>
+                        <div class="row">
+                            <li class="list-group-item col-md-6">药物过敏史</li>
+                            <p class="list-group-item col-md-6" th:text="${item.drugHistory}">Cras justo odio</p>
+                        </div>
+                        <div class="row">
+                            <li class="list-group-item col-md-6">暴露史</li>
+                            <p class="list-group-item col-md-6" th:text="${item.exposureHistory}">Cras justo odio</p>
+                        </div>
+                        <div class="row">
+                            <li class="list-group-item col-md-6">家族遗传史</li>
+                            <p class="list-group-item col-md-6" th:text="${item.familyHistory}">Cras justo odio</p>
+                        </div>
+                    </ul>
+                    <div class="card-body">
+                        <p class="card-title">选择评级</p>
+                        <div class="input-group  justify-content-center">
+                            <div class="row">
+                                <div class="custom-control custom-radio col-md-3">
+                                    <input th:id="'0'+${item.userId}" name="ratingLevel" type="radio" class="custom-control-input" checked="" required="" value="0">
+                                    <label class="custom-control-label" th:for="'0'+${item.userId}">未选择</label>
+                                </div>
+                                <div class="custom-control custom-radio col-md-3">
+                                    <input th:id="'1'+${item.userId}" name="ratingLevel" type="radio" class="custom-control-input" required="" value="1">
+                                    <label class="custom-control-label" th:for="'1'+${item.userId}">1</label>
+                                </div>
+                                <div class="custom-control custom-radio col-md-3">
+                                    <input th:id="'2'+${item.userId}" name="ratingLevel" type="radio" class="custom-control-input" required="" value="2">
+                                    <label class="custom-control-label" th:for="'2'+${item.userId}">2</label>
+                                </div>
+                                <div class="custom-control custom-radio col-md-3">
+                                    <input th:id="'3'+${item.userId}" name="ratingLevel" type="radio" class="custom-control-input" required="" value="3">
+                                    <label class="custom-control-label" th:for="'3'+${item.userId}">3</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" th:onclick="'change('+${item.userId}+')'">定级</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- footer part start-->
+    <div th:replace="commonPart/footPart::footPart"></div>
+
+    <!-- footer part end-->
+
+    <!-- jquery plugins here-->
+
+    <script src="js/jquery-1.12.1.min.js"></script>
+    <!-- popper js -->
+    <script src="js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- owl carousel js -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <!-- contact js -->
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/mail-script.js"></script>
+    <script src="js/contact.js"></script>
+    <!-- custom js -->
+    <script src="js/custom.js"></script>
+    <script>
+
+
+        function change(id) {
+            var val = $("[name=ratingLevel]:checked").val();
+            var data = {level:val,id:id};
+            console.log(data);
+            $.ajax({
+                url: "/setRating",  // 请求地址
+                type: "POST",              // 发送post请求
+                dataType: "json",          // 响应结果的数据类型
+                data: data,                 // 请求数据
+                success:function(data){    // 响应的回调函数
+                    console.log(data);
+                    var select = "#staticBackdrop"+id;
+                    console.log(select);
+                    $(select).modal('hide');
+                    window.location.href="/ratingCheck";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

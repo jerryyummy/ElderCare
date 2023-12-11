@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>老舍</title>
+    <link rel="icon" href="img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="css/flaticon.css">
+    <!-- magnific popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- nice select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!--::header part start::-->
+<div th:replace="commonPart/patientHeadPart::patientHeadPart"></div>
+<!-- Header part end-->
+
+<!-- rating form part start-->
+<!-- Start Align Area -->
+<!-- breadcrumb start-->
+<section class="breadcrumb_part breadcrumb_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner">
+                    <div class="breadcrumb_iner_item">
+                        <h2>养老等级</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb start-->
+
+<!-- daily check part start-->
+<section class="single_about_padding">
+    <div class="container">
+        <div class="row">
+            <div class="row col-5">
+                <div class="row">
+                    <div class="single-defination">
+                        <h2 class="mb-20">当前照顾评级：</h2>
+                        <h3 th:text="${ratingform.level}">一级</h3>
+                    </div>
+                    <div class="single-defination">
+                        <h2 class="mb-20">当前申请状态：</h2>
+
+                        <div th:if="${ratingform.checked}">
+                            <h3>已审核</h3>
+                        </div>
+                        <div th:unless="${ratingform.checked}">
+                            <h3>审核中</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="about_us_text">
+                        <h2>分级申请</h2>
+                        <p>如需变更申请，请在专业人士指导下填写。</p>
+                        <br>
+                        <a class="btn_2 " href="/rating">开始</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-7 mt-sm-30">
+                <h2 class="mb-20">当前等级养老建议：</h2>
+                <div class="">
+                    <ol class="ordered-list">
+                        <li><span>社区居家养老</span>
+                            <ol class="ordered-list-roman">
+                                <li><span>照顾0级：能力完好（0级），医疗照护0级，疾病状况0级～2级</span></li>
+                                <li><span>照顾1级：能力完好（0级），医疗照护1级，疾病状况1级～2级；或轻度失能（1级），医疗照护0级，疾病状况0级</span></li>
+                                <li><span>照顾2级：轻度失能（1级），医疗照护0级～1级，疾病状况1级</span></li>
+                            </ol>
+                        </li>
+                        <li><span>社区居家养老或机构养老</span>
+                            <ol class="ordered-list-roman">
+                                <li><span>照顾3级：轻度失能（1级），医疗照护0级～2级，疾病状况2级；或中度失能（2级），医疗照护0级～1级，疾病状况0～1级</span></li>
+                            </ol>
+                        </li>
+                        <li><span>机构养老</span>
+                            <ol class="ordered-list-roman">
+                                <li><span>照顾4级：中度失能（2级），医疗照护2级，疾病状况1级～2级</span></li>
+                                <li><span>照顾5级：中度失能（2级），医疗照护3级，疾病状况1级～2级；或重度失能（3级），医疗照护1级～3级，疾病状况1级～2级</span></li>
+                                <li><span>照顾6级：医疗照护4级或疾病状况3级</span></li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- daily check part end-->
+<!-- rating form part end-->
+
+<!-- footer part start-->
+<div th:replace="commonPart/footPart::footPart"></div>
+<!-- footer part end-->
+<!-- jquery plugins here-->
+
+<script src="js/jquery-1.12.1.min.js"></script>
+<!-- popper js -->
+<script src="js/popper.min.js"></script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- owl carousel js -->
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<!-- contact js -->
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/contact.js"></script>
+<!-- custom js -->
+<script src="js/custom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="js/jquery.js"></script>
+<script th:inline="javascript">
+    $().ready(function (){
+        console.log("in");
+        console.log([[${article.audioUrl}]]);
+        $("audio").attr("autobuffer", false);
+        // 设置audio组件的音频文件地址
+        $("audio").attr("src",[[${article.audioUrl}]]);
+        // 播放语音
+        document.getElementById("audio").play();
+    })
+</script>
+<body>
+<audio id="audio" controls style="width:300px; margin-top: 40px;">不支持</audio>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>老舍</title>
+    <link rel="icon" href="img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="css/flaticon.css">
+    <!-- magnific popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- nice select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!--::header part start::-->
+<div th:replace="commonPart/patientHeadPart::patientHeadPart"></div>
+<!-- Header part end-->
+
+<!-- daily check form part start-->
+<!-- Start Align Area -->
+<div class="whole-wrap">
+    <div class="container box_1170">
+        <div class="section-top-border">
+            <h3 class="mb-30">注意事项</h3>
+            <div class="row">
+                <div class="col-lg-12">
+                    <blockquote class="generic-blockquote">
+                        请如实填写，不得篡改
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="section-top-border">
+            <div class="justify-content-center">
+                <form th:action="@{/saveDailyCheckForm}" th:object="${dailyCheckForm}" method="POST">
+                    <h3 class="mb-10">一般情况</h3>
+                    <br>
+                    <h6 class="mb-10">体温 ℃</h6>
+                    <div class="mt-10">
+                        <input type="text" placeholder="体温"
+                               onfocus="this.placeholder = ''" onblur="this.placeholder = '体温'" required
+                               class="single-input" name="bodyTemp" th:field="*{bodyTemp}">
+                    </div>
+                    <h6 class="mb-10">脉率 次/分</h6>
+                    <div class="mt-10">
+                        <input type="text" placeholder="脉率"
+                               onfocus="this.placeholder = ''" onblur="this.placeholder = '脉率'" required
+                               class="single-input" name="pulseRate" th:field="*{pulseRate}">
+                    </div>
+                    <h6 class="mb-10">呼吸频率 次/分</h6>
+                    <div class="mt-10">
+                        <input type="text" placeholder="呼吸频率"
+                               onfocus="this.placeholder = ''" onblur="this.placeholder = '呼吸频率'" required
+                               class="single-input" name="*{breathRate}" th:field="*{breathRate}">
+                    </div>
+                    <h6 class="mb-10">血压 mmHg</h6>
+                    <div class="mt-10">
+                        <input type="text" placeholder="血压"
+                               onfocus="this.placeholder = ''" onblur="this.placeholder = '血压'" required
+                               class="single-input" name="bloodPressure" th:field="*{bloodPressure}">
+                    </div>
+                    <h6 class="mb-10">血氧 毫升%</h6>
+                    <div class="mt-10">
+                        <input type="text" placeholder="血氧"
+                               onfocus="this.placeholder = ''" onblur="this.placeholder = '血氧'" required
+                               class="single-input" name="bloodOxygen" th:field="*{bloodOxygen}">
+                    </div>
+                    <h6 class="mb-10">血糖 mg/dl</h6>
+                    <div class="mt-10">
+                        <input type="text" placeholder="血糖"
+                               onfocus="this.placeholder = ''" onblur="this.placeholder = '血糖'" required
+                               class="single-input" name="bloodSugar" th:field="*{bloodSugar}">
+                    </div>
+                    <br>
+                    <h3 class="mb-10">生活情况</h3>
+                    <br>
+                    <h6 class="mb-10">体育锻炼</h6>
+                    <div class="mt-10">
+                        <div class="form-select" id="default-select_2">
+                            <select name="sportFreq" th:field="*{sportFreq}">
+                                <option value="0">每天</option>
+                                <option value="1">每2~6天</option>
+                                <option value="2">每周</option>
+                                <option value="3">偶尔</option>
+                                <option value="4">从不</option>
+                            </select>
+                        </div>
+                    </div>
+                    <h6 class="mb-10">日常饮食</h6>
+                    <div class="mt-10">
+                        <div class="form-select" id="default-select_3">
+                            <select name="diet" th:field="*{diet}">
+                                <option value="0">荤素均衡</option>
+                                <option value="1">荤食为主</option>
+                                <option value="2">素食为主</option>
+                                <option value="3">断食</option>
+                                <option value="4">其它</option>
+                            </select>
+                        </div>
+                    </div>
+                    <h6 class="mb-10">吸烟情况</h6>
+                    <div class="mt-10">
+                        <div class="form-select" id="default-select_4">
+                            <select name="smokeFreq" th:field="*{smokeFreq}">
+                                <option value="0">从不吸烟</option>
+                                <option value="1">吸烟频率较低</option>
+                                <option value="2">吸烟频率较高</option>
+                                <option value="3">已戒烟</option>
+                            </select>
+                        </div>
+                    </div>
+                    <h6 class="mb-10">饮酒情况</h6>
+                    <div class="mt-10">
+                        <div class="form-select" id="default-select_5">
+                            <select name="drunkFreq" th:field="*{drunkFreq}">
+                                <option value="0">从不饮酒</option>
+                                <option value="1">饮酒频率较低</option>
+                                <option value="2">饮酒频率较高</option>
+                                <option value="3">已戒酒</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <h3 class="mb-10">查体</h3>
+                    <br>
+                    <h6 class="mb-10">皮肤</h6>
+                    <div class="mt-10">
+                        <div class="form-select" id="default-select_6">
+                            <select name="skin" th:field="*{skin}">
+                                <option value="0">正常</option>
+                                <option value="1">潮红</option>
+                                <option value="2">苍白</option>
+                                <option value="3">发绀</option>
+                                <option value="4">黄染</option>
+                                <option value="5">色素沉着</option>
+                                <option value="6">其它异常</option>
+                            </select>
+                        </div>
+                    </div>
+                    <h6 class="mb-10">巩膜</h6>
+                    <div class="mt-10">
+                        <div class="form-select" id="default-select_7">
+                            <select name="sclera" th:field="*{sclera}">
+                                <option value="0">正常</option>
+                                <option value="1">黄染</option>
+                                <option value="2">充血</option>
+                                <option value="3">其它异常</option>
+                            </select>
+                        </div>
+                    </div>
+                    <h6 class="mb-10">肺</h6>
+                    <div class="mt-10">
+                        <div class="form-select" id="default-select_8">
+                            <select name="lung" th:field="*{lung}">
+                                <option value="0">正常</option>
+                                <option value="1">桶状胸异常</option>
+                                <option value="2">呼吸音异常</option>
+                                <option value="3">罗音异常</option>
+                                <option value="4">其它异常</option>
+                            </select>
+                        </div>
+                    </div>
+                    <h6 class="mb-10">心</h6>
+                    <div class="mt-10">
+                        <div class="form-select" id="default-select_9">
+                            <select name="heart" th:field="*{heart}">
+                                <option value="0">正常</option>
+                                <option value="1">心律不齐</option>
+                                <option value="2">心率绝对不齐</option>
+                                <option value="3">其它异常</option>
+                            </select>
+                        </div>
+                    </div>
+                    <h6 class="mb-10">腹部</h6>
+                    <div class="mt-10">
+                        <div class="form-select" id="default-select_10">
+                            <select name="abdomen" th:field="*{abdomen}">
+                                <option value="0">正常</option>
+                                <option value="1">压痛</option>
+                                <option value="2">包块</option>
+                                <option value="3">肝大</option>
+                                <option value="4">脾大</option>
+                                <option value="5">浊音</option>
+                                <option value="6">其它异常</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-10">
+                            <textarea class="single-textarea" placeholder="补充说明" onfocus="this.placeholder = ''"
+                                      onblur="this.placeholder = '补充说明'" name="bodyCheckSupplement" th:field="*{bodyCheckSupplement}"></textarea>
+                    </div>
+                    <br>
+                    <h3 class="mb-10">其它</h3>
+                    <br>
+                    <h6 class="mb-10">辅助检查</h6>
+                    <div class="mt-10">
+                        <div class="form-select" id="default-select_11">
+                            <select name="auxiliaryCheck" th:field="*{auxiliaryCheck}">
+                                <option value="0">无需</option>
+                                <option value="1">血常规</option>
+                                <option value="2">尿常规</option>
+                                <option value="3">心电图</option>
+                                <option value="4">肝功能</option>
+                                <option value="5">肾功能</option>
+                                <option value="6">B超</option>
+                                <option value="7">CT</option>
+                                <option value="8">其它检查</option>
+                            </select>
+                        </div>
+                    </div>
+                    <h6 class="mb-10">当前健康问题</h6>
+                    <div class="mt-10">
+                        <div class="form-select" id="default-select_12">
+                            <select name="currentProblem" th:field="*{currentProblem}">
+                                <option value="0">无</option>
+                                <option value="1">脑血管疾病</option>
+                                <option value="2">肾脏疾病</option>
+                                <option value="3">心脏疾病</option>
+                                <option value="4">血管疾病</option>
+                                <option value="5">神经系统疾病</option>
+                                <option value="6">眼耳鼻喉疾病</option>
+                                <option value="7">外伤</option>
+                                <option value="8">其它</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-10">
+                            <textarea class="single-textarea" placeholder="补充说明" onfocus="this.placeholder = ''"
+                                      onblur="this.placeholder = '补充说明'" name="otherSupplement" th:field="*{otherSupplement}"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-10">
+                        </div>
+                        <div class="col-2">
+                            <input type="submit" class="btn_2 mt-30" onClick="return confirm('确定提交?');" style="outline:none;border:0">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- daily check form part end-->
+
+<!-- footer part start-->
+<div th:replace="commonPart/footPart::footPart"></div>
+<!-- footer part end-->
+<!-- jquery plugins here-->
+
+<script src="js/jquery-1.12.1.min.js"></script>
+<!-- popper js -->
+<script src="js/popper.min.js"></script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- owl carousel js -->
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<!-- contact js -->
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/contact.js"></script>
+<!-- custom js -->
+<script src="js/custom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+</body>
+</html>
